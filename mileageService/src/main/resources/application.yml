@@ -1,0 +1,23 @@
+server:
+  port: 8070
+spring:
+  datasource:
+    url: jdbc:h2:~/triple;MODE=MYSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    database: mysql
+logging.level:
+  org.hibernate.SQL: debug
+# org.hibernate.type: trace
