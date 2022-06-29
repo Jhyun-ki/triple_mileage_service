@@ -12,11 +12,9 @@ import java.util.UUID;
 
 @Entity
 @Getter
-public class Member extends BaseEntity{
+public class Place extends BaseEntity{
     @Id
-    @Column(name="user_id", columnDefinition = "BINARY(16)")
-    private UUID id = CommonUtil.createSequentialUUID();
-
-    private String userName;
-    private int pointBalance;
+    @Column(name="place_id",columnDefinition = "BINARY(16)")
+    private UUID id = CommonUtil.createSequentialUUID();;
+    private String placeName;
 }

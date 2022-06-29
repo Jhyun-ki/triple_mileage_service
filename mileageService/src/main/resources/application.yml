@@ -12,12 +12,15 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         show_sql: true
         format_sql: true
     database: mysql
+#  sql:
+#    init:
+#      mode: always
 logging.level:
   org.hibernate.SQL: debug
 # org.hibernate.type: trace
