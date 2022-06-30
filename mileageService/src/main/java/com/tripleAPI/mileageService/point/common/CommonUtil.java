@@ -5,7 +5,6 @@ import com.fasterxml.uuid.Generators;
 import java.util.UUID;
 
 public class CommonUtil {
-
     public static UUID createSequentialUUID() {
         UUID uuid = Generators.timeBasedGenerator().generate();
         String[] uuidArr = uuid.toString().split("-");

@@ -4,7 +4,6 @@ import com.tripleAPI.mileageService.point.common.CommonUtil;
 import com.tripleAPI.mileageService.point.domain.enums.PointState;
 import com.tripleAPI.mileageService.point.domain.enums.PointType;
 import lombok.Getter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -26,11 +25,13 @@ public class Point extends BaseEntity{
 
     private int pointAmt;
 
+    @OneToOne(mappedBy = "point")
+    @PrimaryKeyJoinColumn
+    private PointCancelDetail pointCancelDetail;
+
     @Enumerated(EnumType.STRING)
     private PointState pointState; // NORMAL, CANCEL
 
     @Enumerated(EnumType.STRING)
     private PointType pointType; // NORMAL_REVIEW, FIRST_REVIEW
-
-
 }
