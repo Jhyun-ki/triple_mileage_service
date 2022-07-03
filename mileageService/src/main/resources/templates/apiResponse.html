@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <h3>API 호출 결과</h3>
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+        <p th:text="${apiResponse}"></p>
+    <br/>
+    <a th:href="@{/review}" class="btn btn-primary">홈으로 이동</a>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
