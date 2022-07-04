@@ -1,3 +1,4 @@
+-- 테이블 DDL
 CREATE TABLE member COMMENT '회원' (
     user_id       BINARY(16)  NOT NULL               COMMENT '회원 아이디',
     user_name     VARCHAR(50) NOT NULL               COMMENT '회원 이름',
@@ -27,12 +28,6 @@ CREATE TABLE point COMMENT '포인트 관리'(
     PRIMARY KEY (point_id)
 );
 
-CREATE TABLE point_cancel_detail COMMENT '포인트 취소 이력 관리'(
-    point_id        BINARY(16)  NOT NULL COMMENT '포인트 아이디',
-    point_use_amt   INTEGER     NOT NULL COMMENT '포인트 사용 금액',
-    PRIMARY KEY (point_id)
-);
-
 CREATE TABLE review COMMENT '리뷰'(
     review_id     BINARY(16) NOT NULL                COMMENT '리뷰 아이디',
     review_action VARCHAR(6) NOT NULL                COMMENT '리뷰의 상태(ADD:추가, MOD:수정, DELETE:삭제)',
@@ -55,16 +50,18 @@ CREATE TABLE review_photo COMMENT '리뷰 사진' (
     primary key (attached_photo_id)
 );
 
-ALTER TABLE point ADD CONSTRAINT fk_point_member_user_id FOREIGN KEY (user_id) references member (user_id);
-ALTER TABLE point ADD CONSTRAINT fk_point_review_review_id FOREIGN KEY (review_id) references review (review_id);
-ALTER TABLE point_cancel_detail ADD CONSTRAINT fk_point_cancel_detail_point_point_id FOREIGN KEY (point_id) references point (point_id);
-ALTER TABLE review ADD CONSTRAINT fk_review_place_place_id FOREIGN KEY (place_id) references place (place_id);
-ALTER TABLE review ADD CONSTRAINT fk_review_member_user_id FOREIGN KEY (user_id) references member (user_id);
+-- 테이블 fk 제약 조건
+ALTER TABLE point        ADD CONSTRAINT fk_point_member_user_id          FOREIGN KEY (user_id)   references member (user_id);
+ALTER TABLE point        ADD CONSTRAINT fk_point_review_review_id        FOREIGN KEY (review_id) references review (review_id);
+ALTER TABLE review       ADD CONSTRAINT fk_review_place_place_id         FOREIGN KEY (place_id)  references place (place_id);
+ALTER TABLE review       ADD CONSTRAINT fk_review_member_user_id         FOREIGN KEY (user_id)   references member (user_id);
 ALTER TABLE review_photo ADD CONSTRAINT fk_review_photo_review_review_id FOREIGN KEY (review_id) references review (review_id);
 
-CREATE INDEX idx_review_place_id ON review (place_id);
-CREATE INDEX idx_review_user_id ON review (user_id);
-CREATE INDEX idx_point_review_id ON point (review_id);
-CREATE INDEX idx_point_point_type ON point (point_type);
+-- 테이블 Index
+CREATE INDEX idx_review_place_id  ON review (place_id);
+CREATE INDEX idx_review_user_id   ON review (user_id);
+CREATE INDEX idx_point_review_id  ON point  (review_id);
+CREATE INDEX idx_point_point_type ON point  (point_type);
+CREATE INDEX idx_point_user_id    ON point  (user_id);
 
 

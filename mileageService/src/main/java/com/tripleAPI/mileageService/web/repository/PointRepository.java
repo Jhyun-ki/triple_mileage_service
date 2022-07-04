@@ -40,4 +40,10 @@ public class PointRepository {
                 .setParameter("pointState", pointState)
                 .getResultList();
     }
+
+    public List<Point> findByUserId(Member member) {
+        return em.createQuery("select p from Point p where p.member= :member")
+                .setParameter("member", member)
+                .getResultList();
+    }
 }

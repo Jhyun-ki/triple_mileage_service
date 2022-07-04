@@ -7,7 +7,7 @@
     <p style="color: crimson" th:if="${action == 'ADD'}" >선택하신 장소에 신규 리뷰 등록이 가능합니다.<br/>(리뷰 수정, 삭제를 하시려면 신규 등록을 진행 바랍니다.)</p>
     <p style="color: crimson" th:unless="${action == 'ADD'}" >등록하신 리뷰에 대한 수정, 삭제가 가능합니다.</p>
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form id="frmReview" name="frmReview" role="form" method="post">
+    <form id="frmEvents" name="frmEvents" role="form" method="post">
         <div class="form-group">
             <label for="member">회원</label>
             <input type="text" id="member" name="userName" th:value="${member.userName}" readonly="readonly" class="form-control">
@@ -49,15 +49,15 @@
 <script type="text/javascript">
     var fnSubmit = function(action) {
         if(action == 'ADD') {
-            document.frmReview.action = '/review/addReview'
+            document.frmEvents.action = '/addReview'
         }
         else if(action == 'MOD') {
-            document.frmReview.action = '/review/modReview'
+            document.frmEvents.action = '/modReview'
         }
         else if(action == 'DELETE'){
-            document.frmReview.action = '/review/deleteReview'
+            document.frmEvents.action = '/deleteReview'
         }
 
-        document.frmReview.submit();
+        document.frmEvents.submit();
     }
 </script>

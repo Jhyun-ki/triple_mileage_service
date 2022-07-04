@@ -4,10 +4,15 @@
 <body>
 <div class="container">
     <h3>API 호출 결과</h3>
+    <p style="color: crimson;font-weight: bold" th:if="${myHome == 'homePointListAPI'}">GET /pointListByUserId/{userId}</p>
+    <p style="color: crimson;font-weight: bold" th:unless="${myHome == 'homePointListAPI'}">POST /events</p>
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-        <p th:text="${apiResponse}"></p>
+
+    <textarea rows="20" cols="15" class="form-control" th:text="${apiResponse}"></textarea>
+
     <br/>
-    <a th:href="@{/review}" class="btn btn-primary">홈으로 이동</a>
+    <a th:href="@{/homeEventsAPI}" class="btn btn-primary">events api 홈으로 이동</a>
+    <a th:href="@{/homePointListAPI}" class="btn btn-primary">조회 api 홈으로 이동</a>
     <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
 </body>

@@ -10,8 +10,9 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@Table(name="point", indexes = {@Index(name = "idx_point_review_id", columnList = "review_id")
-                               ,@Index(name = "idx_point_point_type", columnList = "point_type")})
+@Table(name="point", indexes = {@Index(name = "idx_point_review_id",  columnList = "review_id")
+                               ,@Index(name = "idx_point_point_type", columnList = "point_type")
+                               ,@Index(name = "idx_point_user_id",    columnList = "user_id")})
 public class Point extends BaseEntity{
     @Id
     @Column(name = "point_id", columnDefinition = "BINARY(16)")
@@ -26,10 +27,6 @@ public class Point extends BaseEntity{
     private Review review;
 
     private int pointAmt;
-
-    @OneToOne(mappedBy = "point")
-    @PrimaryKeyJoinColumn
-    private PointCancelDetail pointCancelDetail;
 
     @Enumerated(EnumType.STRING)
     private PointState pointState; // NORMAL, CANCEL

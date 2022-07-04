@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ApiExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CommonResponse> resourceNotFoundException(MethodArgumentNotValidException e) {
-        CommonResponse response = new CommonResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        CommonResponse response = new CommonResponse(HttpStatus.BAD_REQUEST.value(), e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
@@ -26,5 +26,11 @@ public class ApiExceptionHandler {
     public ResponseEntity<CommonResponse> handleException(CommonException e) {
         CommonResponse response = new CommonResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(UserNotExistException.class)
+    public ResponseEntity<CommonResponse> handleException(UserNotExistException e) {
+        CommonResponse response = new CommonResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

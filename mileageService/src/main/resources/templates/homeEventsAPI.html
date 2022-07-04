@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <a th:href="@{/homePointListAPI}" class="btn btn-dark">조회 api 홈으로 이동</a>
+    <br/> <br/>
+    <h3>events API</h3>
+    <form role="form" action="/eventsAPIForm" th:object="${memberPlaceForm}" method="post">
+        <div class="form-group">
+            <label th:for="userId">회원</label>
+            <select th:field="*{userId}" class="form-control" placeholder="회원을 선택해주세요"
+                    th:class="${#fields.hasErrors('userId')}? 'form-control fieldError' : 'form-control'">
+                <option value="">회원선택</option>
+                <option th:each="member : ${memberList}" th:value="${member.id}" th:text="${member.userName}" />
+            </select>
+            <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">Incorrect data</p>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label th:for="placeId">장소</label>
+            <select th:field="*{placeId}" class="form-control" placeholder="장소를 선택해주세요"
+                    th:class="${#fields.hasErrors('placeId')}? 'form-control fieldError' : 'form-control'">
+                <option value="">장소선택</option>
+                <option th:each="place : ${placeList}" th:value="${place.id}" th:text="${place.placeName}" />
+            </select>
+            <p th:if="${#fields.hasErrors('placeId')}" th:errors="*{placeId}">Incorrect data</p>
+        </div>
+        <br/>
+
+        <button type="submit" class="btn btn-primary">리뷰</button>
+    </form>
+    <br/>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

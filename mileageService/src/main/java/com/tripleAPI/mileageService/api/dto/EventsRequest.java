@@ -13,22 +13,22 @@ import java.util.UUID;
 @Getter @Setter
 public class EventsRequest {
 
-    @NotEmpty
+    @NotEmpty(message = "type 값은 필수 입니다.")
     private String type;
 
-    @NotNull
+    @NotNull(message = "action 값은 필수 입니다.")
     private Action action;
 
-    @NotNull
+    @NotNull(message = "reviewId 값은 필수 입니다.")
     private UUID reviewId;
 
     private String content;
 
     private List<UUID> attachedPhotoIds = new ArrayList<>();
 
-    @NotNull
+    @NotNull(message = "userId 값은 필수 입니다.")
     private UUID userId;
 
-    @NotNull
+    @NotNull(message = "placeId 값은 필수 입니다.")
     private UUID placeId;
 }

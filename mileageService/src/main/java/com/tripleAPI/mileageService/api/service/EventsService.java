@@ -2,7 +2,10 @@ package com.tripleAPI.mileageService.api.service;
 
 import com.tripleAPI.mileageService.api.dto.EventsRequest;
 import com.tripleAPI.mileageService.api.dto.EventsResponse;
+import com.tripleAPI.mileageService.api.dto.PointListByUserId;
+import com.tripleAPI.mileageService.api.dto.PointListByUserIdResponse;
 import com.tripleAPI.mileageService.exception.CommonException;
+import com.tripleAPI.mileageService.exception.UserNotExistException;
 import com.tripleAPI.mileageService.web.domain.*;
 import com.tripleAPI.mileageService.web.domain.enums.Action;
 import com.tripleAPI.mileageService.web.domain.enums.PhotoStatus;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -174,5 +178,37 @@ public class EventsService {
         }
 
         return new EventsResponse(review.getId(), member.getId(), member.getPointBalance());
+    }
+
+    public PointListByUserIdResponse selectPointListByUserId(UUID userId) {
+        PointListByUserIdResponse pointListByUserIdResponse = new PointListByUserIdResponse();
+
+        Member findMember = memberRepository.findOne(userId);
+
+        if(findMember == null) {
+            throw new UserNotExistException("존재하지 않는 회원 입니다.");
+        }
+
+        pointListByUserIdResponse.setUserId(findMember.getId());
+        pointListByUserIdResponse.setUserName(findMember.getUserName());
+        pointListByUserIdResponse.setCreated_at(findMember.getCreated_at());
+        pointListByUserIdResponse.setUpdated_at(findMember.getUpdated_at());
+
+        List<Point> findPoints = pointRepository.findByUserId(findMember);
+
+        for(Point point : findPoints) {
+            PointListByUserId pointListByUserId = new PointListByUserId();
+            pointListByUserId.setPointId(point.getId());
+            pointListByUserId.setPointAmt(point.getPointAmt());
+            pointListByUserId.setReviewId(point.getReview().getId());
+            pointListByUserId.setPointState(point.getPointState());
+            pointListByUserId.setPointType(point.getPointType());
+            pointListByUserId.setCreated_at(point.getCreated_at());
+            pointListByUserId.setUpdated_at(point.getUpdated_at());
+
+            pointListByUserIdResponse.getPoint().add(pointListByUserId);
+        }
+
+        return pointListByUserIdResponse;
     }
 }
