@@ -1,8 +1,8 @@
-package com.tripleAPI.mileageService.web.domain;
+package com.tripleAPI.mileageService.domain;
 
 import com.tripleAPI.mileageService.common.CommonUtil;
-import com.tripleAPI.mileageService.web.domain.enums.PointState;
-import com.tripleAPI.mileageService.web.domain.enums.PointType;
+import com.tripleAPI.mileageService.domain.enums.PointState;
+import com.tripleAPI.mileageService.domain.enums.PointType;
 import lombok.Getter;
 
 import javax.persistence.*;

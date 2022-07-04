@@ -6,19 +6,23 @@
     아래의 화면 순서대로 web을 통해 API 호출 부탁 드려요!
 
 ## 2. 애플리케이션 실행 방법
-## &#128187; 해당 API 실행 방법 (리눅스)
-    # IntelliJ로 실행하는 방법
-        * IntelliJ가 설치되어 있다면 프로젝트 파일 열어서 애플리케이션 실행
-    # jar 파일을 실행하는 방법
-        * IDE에서 해당 API 프로젝트 Gradle > bootJar 실행하여 .jar 파일 생성
+    1. IntelliJ로 실행하는 방법
+        * IntelliJ로 프로젝트 파일 열어서 애플리케이션 실행
+    2. IntelliJ로 jar 파일을 생성하여 실행하는 방법
+        * IDE에서 해당 API 프로젝트 Gradle > Tasks > bootJar 실행하여 .jar 파일 생성
         * 리눅스 서버 접속 후 JDK 설치 및 환경변수 셋팅
         * nohup java -jar [jar파일명]& 명령어로 jar 파일 실행
         * kill -9 [pid] 명령어로 실행 종료 (pid = ps -ef | grep java)
+    3. terminal을 이용하는 방법(Mac)
+        * 프로젝트 루트 디렉토리(triple_mileage_service/mileageServie/) 경로로 이동
+        * ./gradlew bootJar 명력어 입력 >> ./build/libs 디렉토리에 jar 실행 파일이 생성된다.
+        * 직접 루트 디렉토리로 이동하여 java -jar로 실행하거나, 루트 디렉토리에서 아래 명령어 실행한다.
+            - ./gradlew bootRun
 
 ## # 리뷰 추가(ADD)
 2-1) 애플리케이션이 실행되었다면, 인터넷 브라우저를 열어 ``http://localhost:8070/homeEventsAPI`` 를 주소창에 입력 합니다.
 
- ![img.png](./images/img.png)
+![img.png](./images/img.png)
 * 회원과 장소를 선택하고 `리뷰` 버튼을 클릭 합니다(`회원`과 `장소`에 대한 데이터는 미리 입력이 되어있는 상태 입니다.)
 
 2-2) events API를 호출하는 양식입니다. 내용과 사진 수량을 입력하고 [추가API] 버튼을 클릭하면 `POST` `http://localhost:8070/events` API를 호출하게 됩니다.

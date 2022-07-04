@@ -1,15 +1,13 @@
-package com.tripleAPI.mileageService.web.repository;
+package com.tripleAPI.mileageService.repository;
 
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.domain.enums.Action;
-import org.springframework.data.jpa.repository.Query;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.domain.Place;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.domain.enums.Action;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,11 +28,6 @@ public class ReviewRepository {
         return em.createQuery("select r from Review r where r.member= :member and r.place= :place", Review.class)
                 .setParameter("member", member)
                 .setParameter("place", place)
-                .getResultList();
-    }
-
-    public List<Review> findAll() {
-        return em.createQuery("select r from Review r", Review.class)
                 .getResultList();
     }
 

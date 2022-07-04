@@ -1,4 +1,4 @@
-package com.tripleAPI.mileageService.web.domain;
+package com.tripleAPI.mileageService.domain;
 
 import com.tripleAPI.mileageService.common.CommonUtil;
 import lombok.Getter;

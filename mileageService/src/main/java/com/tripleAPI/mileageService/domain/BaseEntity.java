@@ -1,6 +1,5 @@
-package com.tripleAPI.mileageService.web.domain;
+package com.tripleAPI.mileageService.domain;
 
-import com.fasterxml.uuid.Generators;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

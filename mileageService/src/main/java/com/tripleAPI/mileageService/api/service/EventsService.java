@@ -6,12 +6,12 @@ import com.tripleAPI.mileageService.api.dto.PointListByUserId;
 import com.tripleAPI.mileageService.api.dto.PointListByUserIdResponse;
 import com.tripleAPI.mileageService.exception.CommonException;
 import com.tripleAPI.mileageService.exception.UserNotExistException;
-import com.tripleAPI.mileageService.web.domain.*;
-import com.tripleAPI.mileageService.web.domain.enums.Action;
-import com.tripleAPI.mileageService.web.domain.enums.PhotoStatus;
-import com.tripleAPI.mileageService.web.domain.enums.PointState;
-import com.tripleAPI.mileageService.web.domain.enums.PointType;
-import com.tripleAPI.mileageService.web.repository.*;
+import com.tripleAPI.mileageService.domain.*;
+import com.tripleAPI.mileageService.domain.enums.Action;
+import com.tripleAPI.mileageService.domain.enums.PhotoStatus;
+import com.tripleAPI.mileageService.domain.enums.PointState;
+import com.tripleAPI.mileageService.domain.enums.PointType;
+import com.tripleAPI.mileageService.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +22,6 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-//merge를 사용하면 위험하다, find를 사용해서 객체를 가져오면은 영속성 엔티티가됨, 이떄 그냥 값을 세팅해주기만하면 된다.(이게 변경감지)
-//엔티티에 메서드를 생성해서 변경할 값만 파라미터로 넘겨서 update를 하고 setter를 모든값에 쓰지 않는다.
-//컨트롤러에서 어설프게 엔티티를 생성해서 파라미터로 만들지 않는다
-//컨트롤러에서는 Id를 조회하고 그값을 service로 넘겨서 service에서 엔티티를 조회해서 영속성 엔티티로 변경(변경감지)해서 로직을 실행한다.
-//entity에 핵심 비즈니스 로직이 있는게 좋다. setter를 설정하는게아니라, 엔티티안에서 핵심 비즈니스로직을 생성해서 사용하자 이게 객체지향적임
 public class EventsService {
     private final ReviewRepository reviewRepository;
     private final PointRepository pointRepository;
@@ -193,6 +188,7 @@ public class EventsService {
         pointListByUserIdResponse.setUserName(findMember.getUserName());
         pointListByUserIdResponse.setCreated_at(findMember.getCreated_at());
         pointListByUserIdResponse.setUpdated_at(findMember.getUpdated_at());
+        pointListByUserIdResponse.setPointBalance(findMember.getPointBalance());
 
         List<Point> findPoints = pointRepository.findByUserId(findMember);
 

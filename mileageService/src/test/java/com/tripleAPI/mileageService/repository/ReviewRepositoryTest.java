@@ -1,11 +1,10 @@
-package com.tripleAPI.mileageService.web.repository;
+package com.tripleAPI.mileageService.repository;
 
 import com.tripleAPI.mileageService.common.CommonUtil;
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.domain.enums.Action;
-import org.junit.Assert;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.domain.Place;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.domain.enums.Action;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class ReviewRepositoryTest {
 
 
         //when
-        boolean isFirst = reviewRepository.isFirstReview(place);
+        boolean isFirst = reviewRepository.isFirstReview(place, Action.DELETE);
         reviewRepository.save(review);
 
 

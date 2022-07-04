@@ -1,7 +1,7 @@
-package com.tripleAPI.mileageService.web.service;
+package com.tripleAPI.mileageService.api.service;
 
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.repository.MemberRepository;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,18 +15,12 @@ import java.util.UUID;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    /**
-     * 회원가입
-     */
     @Transactional
     public UUID join(Member member) {
         memberRepository.save(member);
         return member.getId();
     }
 
-    /**
-     * 회원 전체 조회
-     */
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }

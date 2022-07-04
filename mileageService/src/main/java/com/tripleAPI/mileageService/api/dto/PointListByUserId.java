@@ -1,6 +1,6 @@
 package com.tripleAPI.mileageService.api.dto;
-import com.tripleAPI.mileageService.web.domain.enums.PointState;
-import com.tripleAPI.mileageService.web.domain.enums.PointType;
+import com.tripleAPI.mileageService.domain.enums.PointState;
+import com.tripleAPI.mileageService.domain.enums.PointType;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,11 +1,10 @@
-package com.tripleAPI.mileageService.web.repository;
+package com.tripleAPI.mileageService.repository;
 
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Point;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.domain.enums.PointState;
-import com.tripleAPI.mileageService.web.domain.enums.PointType;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.domain.Point;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.domain.enums.PointState;
+import com.tripleAPI.mileageService.domain.enums.PointType;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
