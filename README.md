@@ -15,7 +15,7 @@
         * kill -9 [pid] 명령어로 실행 종료 (pid = ps -ef | grep java)
     3. terminal을 이용하는 방법(Mac)
         * 프로젝트 루트 디렉토리(triple_mileage_service/mileageServie/) 경로로 이동
-        * ./gradlew bootJar 명력어 입력 >> ./build/libs 디렉토리에 jar 실행 파일이 생성된다.
+        * ./gradlew bootJar 명력어 입력 >> ./build/libs 디렉토리에 jar 실행 파일 생성된다.
         * 직접 루트 디렉토리로 이동하여 java -jar로 실행하거나, 루트 디렉토리에서 아래 명령어 실행한다.
             - ./gradlew bootRun
 
@@ -115,6 +115,7 @@
             "created_at": "2022-07-04T17:07:37.672",
             "userName": "Lucian",
             "userId": "11ecfb70-5e24-781f-af56-4d7df0c9f4c4",
+            "pointBalance": 3,
             "point": [
                 {
                     "pointAmt": 1,
