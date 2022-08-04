@@ -1,8 +1,6 @@
 package com.tripleAPI.mileageService.web.controller;
 
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data

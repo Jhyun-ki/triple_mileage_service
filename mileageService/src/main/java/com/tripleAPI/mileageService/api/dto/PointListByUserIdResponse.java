@@ -1,7 +1,5 @@
 package com.tripleAPI.mileageService.api.dto;
 
-import com.tripleAPI.mileageService.web.domain.enums.PointState;
-import com.tripleAPI.mileageService.web.domain.enums.PointType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +15,7 @@ public class PointListByUserIdResponse {
     private String userName;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
+    private int pointBalance;
 
     private List<PointListByUserId> point = new ArrayList<>();
 }

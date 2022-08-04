@@ -1,6 +1,6 @@
-package com.tripleAPI.mileageService.web.domain;
+package com.tripleAPI.mileageService.domain;
 
-import com.tripleAPI.mileageService.web.domain.enums.PhotoStatus;
+import com.tripleAPI.mileageService.domain.enums.PhotoStatus;
 import lombok.Getter;
 
 import javax.persistence.*;

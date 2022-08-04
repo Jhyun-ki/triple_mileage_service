@@ -1,9 +1,9 @@
-package com.tripleAPI.mileageService.web.service;
+package com.tripleAPI.mileageService.api.service;
 
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.repository.ReviewRepository;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.domain.Place;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,20 +17,10 @@ import java.util.UUID;
 public class ReviewService {
     private final ReviewRepository reviewRepository;
 
-    /**
-     * 장소 등록
-     */
     @Transactional
     public UUID join(Review review) {
         reviewRepository.save(review);
         return review.getId();
-    }
-
-    /**
-     * 장소 전체 조회
-     */
-    public List<Review> findReviews() {
-        return reviewRepository.findAll();
     }
 
     public Review findOne(UUID reviewId) {

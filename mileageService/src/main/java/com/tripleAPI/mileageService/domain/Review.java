@@ -1,10 +1,8 @@
-package com.tripleAPI.mileageService.web.domain;
+package com.tripleAPI.mileageService.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tripleAPI.mileageService.common.CommonUtil;
-import com.tripleAPI.mileageService.web.domain.enums.Action;
+import com.tripleAPI.mileageService.domain.enums.Action;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;

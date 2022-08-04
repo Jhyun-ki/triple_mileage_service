@@ -4,13 +4,13 @@ package com.tripleAPI.mileageService.web.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tripleAPI.mileageService.api.dto.EventsRequest;
 import com.tripleAPI.mileageService.common.CommonUtil;
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.domain.enums.Action;
-import com.tripleAPI.mileageService.web.service.MemberService;
-import com.tripleAPI.mileageService.web.service.PlaceService;
-import com.tripleAPI.mileageService.web.service.ReviewService;
+import com.tripleAPI.mileageService.domain.Member;
+import com.tripleAPI.mileageService.domain.Place;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.domain.enums.Action;
+import com.tripleAPI.mileageService.api.service.MemberService;
+import com.tripleAPI.mileageService.api.service.PlaceService;
+import com.tripleAPI.mileageService.api.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.http.*;
@@ -49,7 +49,7 @@ public class ReviewController {
             Place place1 = new Place("Seoul");
             Place place2 = new Place("Tokyo");
             Place place3 = new Place("Jeju");
-            Place place4 = new Place("Lhaos");
+            Place place4 = new Place("Laos");
             Place place5 = new Place("Pari");
 
             placeService.join(place1);
@@ -84,7 +84,7 @@ public class ReviewController {
             Place place1 = new Place("Seoul");
             Place place2 = new Place("Tokyo");
             Place place3 = new Place("Jeju");
-            Place place4 = new Place("Lhaos");
+            Place place4 = new Place("Laos");
             Place place5 = new Place("Pari");
 
             placeService.join(place1);
@@ -159,8 +159,6 @@ public class ReviewController {
         HttpEntity<EventsRequest> entity = new HttpEntity<EventsRequest>(eventsRequest, httpHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:8070/events", HttpMethod.POST, entity, String.class);
 
-        System.out.println("안되니? : " + responseEntity.getBody());
-
         JSONObject jsonObject = new JSONObject(responseEntity.getBody());
 
         String prettyBody = jsonObject.toString(4);
@@ -194,8 +192,6 @@ public class ReviewController {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<EventsRequest> entity = new HttpEntity<EventsRequest>(eventsRequest, httpHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:8070/events", HttpMethod.POST, entity, String.class);
-
-        System.out.println("안되니? : " + responseEntity.getBody());
 
         JSONObject jsonObject = new JSONObject(responseEntity.getBody());
 
@@ -232,8 +228,6 @@ public class ReviewController {
         HttpEntity<EventsRequest> entity = new HttpEntity<EventsRequest>(eventsRequest, httpHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:8070/events", HttpMethod.POST, entity, String.class);
 
-        System.out.println("안되니? : " + responseEntity.getBody());
-
         JSONObject jsonObject = new JSONObject(responseEntity.getBody());
 
         String prettyBody = jsonObject.toString(4);
@@ -262,8 +256,6 @@ public class ReviewController {
 
         String pathVariable = String.format("/%s", memberForm.getUserId());
         ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:8070/pointListByUserId" + pathVariable, HttpMethod.GET, entity, String.class);
-
-        System.out.println("안되니? : " + responseEntity.getBody());
 
         JSONObject jsonObject = new JSONObject(responseEntity.getBody());
 

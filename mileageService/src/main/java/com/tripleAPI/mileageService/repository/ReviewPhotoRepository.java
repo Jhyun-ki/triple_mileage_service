@@ -1,9 +1,7 @@
-package com.tripleAPI.mileageService.web.repository;
+package com.tripleAPI.mileageService.repository;
 
-import com.tripleAPI.mileageService.web.domain.Member;
-import com.tripleAPI.mileageService.web.domain.Place;
-import com.tripleAPI.mileageService.web.domain.Review;
-import com.tripleAPI.mileageService.web.domain.ReviewPhoto;
+import com.tripleAPI.mileageService.domain.Review;
+import com.tripleAPI.mileageService.domain.ReviewPhoto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,11 +20,6 @@ public class ReviewPhotoRepository {
 
     public ReviewPhoto findOne(UUID id) {
         return em.find(ReviewPhoto.class, id);
-    }
-
-    public List<ReviewPhoto> findAll() {
-        return em.createQuery("select rp from ReviewPhoto rp", ReviewPhoto.class)
-                .getResultList();
     }
 
     public List<ReviewPhoto> findByReview(Review review) {

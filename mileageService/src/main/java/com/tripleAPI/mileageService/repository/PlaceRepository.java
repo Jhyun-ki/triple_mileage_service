@@ -1,6 +1,6 @@
-package com.tripleAPI.mileageService.web.repository;
+package com.tripleAPI.mileageService.repository;
 
-import com.tripleAPI.mileageService.web.domain.Place;
+import com.tripleAPI.mileageService.domain.Place;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
